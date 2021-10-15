@@ -1,0 +1,53 @@
+** mapping for ordinals with NA
+
+
+**Basement
+
+ames_df.bsmtfin_type_1 = ames_df.bsmtfin_type_1.map({'None': 0, 'Unf': 1, 'LwQ': 2, 'Rec': 3, 'BLQ': 4, 'ALQ': 5, 'GLQ': 6})
+ames_df['bsmtfin_type_1'].value_counts()
+
+ames_df.bsmtfin_type_2 = ames_df.bsmtfin_type_2.map({'None': 0, 'Unf': 1, 'LwQ': 2, 'Rec': 3, 'BLQ': 4, 'ALQ': 5, 'GLQ': 6})
+ames_df['bsmtfin_type_2'].value_counts()
+
+ames_df.bsmt_qual = ames_df.bsmt_qual.map({'None': 0, 'Po': 1, 'Fa': 2, 'TA': 3, 'Gd': 4, 'Ex': 5})
+ames_df['bsmt_qual'].value_counts()
+
+ames_df.bsmt_cond = ames_df.bsmt_cond.map({'None': 0, 'Po': 1, 'Fa': 2, 'TA': 3, 'Gd': 4, 'Ex': 5})
+ames_df['bsmt_cond'].value_counts()
+
+ames_df.bsmt_exposure = ames_df.bsmt_exposure.map({'None': 0, 'No': 1, 'Mn': 2, 'Av': 3, 'Gd': 4})
+ames_df['bsmt_exposure'].value_counts()
+
+
+
+
+
+**Fireplace
+
+ames_df.fireplace_qu = ames_df.fireplace_qu.map({'None': 0, 'Po': 1, 'Fa': 2, 'TA': 3, 'Gd': 4, 'Ex': 5})
+ames_df['fireplace_qu'].value_counts()
+
+
+
+**Garage variables
+
+ames_df.garage_finish = ames_df.garage_finish.map({'None': 0, 'Unf': 1, 'RFn': 2, 'Fin': 3})
+ames_df['fireplace_qu'].value_counts()
+
+ames_df.garage_qual = ames_df.garage_qual.map({'None': 0, 'Po': 1, 'Fa': 2, 'TA': 3, 'Gd': 4, 'Ex': 5})
+ames_df['garage_qual'].value_counts()
+
+ames_df.garage_cond = ames_df.garage_cond.map({'None': 0, 'Po': 1, 'Fa': 2, 'TA': 3, 'Gd': 4, 'Ex': 5})
+ames_df['garage_cond'].value_counts()
+
+
+
+
+**Columns removed
+
+ames_df.pool_qc = ames_df.pool_qc.map({'None': 0, 'Fa': 1, 'TA': 2, 'Gd': 3, 'Ex': 4})
+ames_df['pool_qc'].value_counts()
+
+ames_df.fence = ames_df.fence.map({'None': 0, 'MnWw': 1, 'GdWo': 2, 'MnPrv': 3, 'GdPrv': 4})
+ames_df['fence'].value_counts()
+

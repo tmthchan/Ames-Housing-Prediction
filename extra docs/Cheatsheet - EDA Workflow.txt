@@ -1,0 +1,148 @@
+EDA Workflow
+
+#import packages
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+%config InlineBackend.figure_format='retina'
+%matplotlib inline
+
+#load dataset
+ames_df = pd.read_csv('../data/train.csv')
+ames_df.head()
+
+#look at the info
+ames_df.info()
+
+#convert column names to lower case
+ames_df.columns= ames_df.columns.str.lower()
+
+**view value counts
+
+#view value counts
+ames_df['overall_qual'].value_counts()
+train['Embarked'].value_counts(dropna=False)
+
+**drop columns
+
+#drop id and pid columns
+ames_df.drop(columns=['id', 'pid'], inplace=True)
+ames_df.head()
+
+titanic_data = titanic_training.drop(['Name', 'Ticket', 'Cabin'], axis=1)
+
+**Drop rows with certain entries
+
+df.drop(df[df['Age'] < 25].index, inplace = True)
+
+
+**map new dictionary for columns
+
+ames_df.lot_shape = ames_df.lot_shape.map({'Reg': 4, 'IR1': 3, 'IR2': 2, 'IR3': 1})
+
+
+
+**Commands used to clean null values
+
+#replace NaN with NA
+ames_df['alley'] = ames_df['alley'].replace(np.nan,'NA')
+
+#replace Twnhs with TwnhsI
+ames_df['bldg_type'] = ames_df['bldg_type'].replace('Twnhs','TwnhsI')
+
+#fill empty cells with ‘None’
+ames_df['mas_vnr_type'].fillna('None', inplace = True)
+
+#fill empty cells with 0
+ames_df['mas_vnr_area'].fillna(0, inplace = True)
+
+#convert float to int
+ames_df[‘garage_cars']=ames_df['garage_cars'].astype(int)
+
+#view sum of null values
+ames_df[‘garage_cars'].isnull().sum()
+
+
+Export Dataset
+#save train_dataframe to csv
+ames_df.to_csv('../data/ames_df_train.csv',index=False)
+
+#get dummies
+ames_df = pd.get_dummies(ames_df, columns=['ms_zoning'])
+
+
+**impute mean
+
+#groupby and find mean
+Parch_groups = titanic_data.groupby(titanic_data['Parch'])
+Parch_groups.mean()
+
+#define function
+def age_approx(cols):
+    Age = cols[0]
+    Parch = cols[1]
+    
+    if pd.isnull(Age):
+        if Parch == 0:
+            return 32
+        elif Parch == 1:
+            return 24
+        elif Parch == 2:
+            return 17
+        elif Parch == 3:
+            return 33
+        elif Parch == 4:
+            return 45
+        else:
+            return 30
+        
+    else:
+        return Age
+
+#apply function 
+titanic_data['Age']= titanic_data[['Age', 'Parch']].apply(age_approx, axis=1)
+titanic_data.isnull().sum()
+
+
+**convert the column index to a list
+# Extract Column Names as List in Pandas Dataframe
+df.columns.tolist()
+
+
+#creating plots
+
+** heatmap and correlation matrix
+
+#create heatmap for 'property_age','yr_sold','year_built','saleprice'
+#create plot
+plt.figure(figsize=(8,8))
+
+#create correlation matrix 
+prop_age = ames_df[['property_age','yr_sold','year_built','saleprice']]
+corrMatrix = prop_age.corr()
+
+#create triangle mask
+mask = np.zeros_like(prop_age.corr())
+mask[np.triu_indices_from(mask)] = True
+
+#plot heatmap
+sns.heatmap(corrMatrix, annot=True, annot_kws={"size":16}, mask = mask)
+
+#set title and x,y labels
+plt.title("Heatmap of Property Age,Year Sold, Year Built & Sale Price", pad=30, weight='bold', size=20)
+
+#set tick labels
+ax.set_xticklabels(ax.get_xmajorticklabels(), fontsize = 14)
+ax.set_yticklabels(ax.get_ymajorticklabels(), fontsize = 14, rotation = 0)
+
+plt.show()
+
+plt.show()
+
+
+plt.show()
+
+
+

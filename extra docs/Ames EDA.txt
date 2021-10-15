@@ -1,0 +1,10 @@
+ames_df.shape
+
+#drop categories A, C and I
+ames_df.drop(ames_df[ames_df['ms_zoning'] == 'A (agr)'].index, inplace = True)
+ames_df.drop(ames_df[ames_df['ms_zoning'] == 'C (all)'].index, inplace = True)
+ames_df.drop(ames_df[ames_df['ms_zoning'] == 'I (all)'].index, inplace = True)
+
+ames_df.shape
+
+Rows with entries from categories A (Agriculture), C (Commericial) and I (Industrial) are dropped as the analysis concentrates on the zoning for residential properties. Since the entries from these three categories attributed to 22 entries, they will not have a significant impact on the size of data samples.
